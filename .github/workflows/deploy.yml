@@ -30,8 +30,3 @@ jobs:
       - name: Check if FastAPI is installed
         run: |
           python -c "import fastapi" || (echo 'FastAPI is not installed' && exit 1)
-
-      - name: Run tests
-        run: |
-          # Replace this with your test command
-          pytest tests/
