@@ -46,3 +46,14 @@ jobs:
 
       - name: Authenticate AWS CLI
         run: aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }} && aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }} && aws configure set default.region ${{ secrets.AWS_DEFAULT_REGION }}
+
+      - name: Package application
+        run: aws deploy push --application-name ${{ vars.APPLICATION_NAME }} --s3-location s3://${{ vars.S3_BUCKET }}/${{ vars.ARTIFACTS_PATH }} --ignore-hidden-files
+
+      - name: Create deployment
+        run: |
+          aws deploy create-deployment \
+            --application-name ${{ vars.APPLICATION_NAME }} \
+            --deployment-group-name dev \
+            --s3-location bucket=${{ vars.S3_BUCKET }},key=${{ vars.ARTIFACTS_PATH }},bundleType=zip \
+            --region ${{ secrets.AWS_DEFAULT_REGION }}
