@@ -7,8 +7,8 @@ apt-get install -y python3-pip nginx
 pip3 install gunicorn
 
 # Configure Nginx
-cp /var/www/fastapi_app/nginx.conf /etc/nginx/sites-available/fastapi_app
-ln -s /etc/nginx/sites-available/fastapi_app /etc/nginx/sites-enabled/
+# cp /var/www/fastapi_app/nginx.conf /etc/nginx/sites-available/fastapi_app
+# ln -s /etc/nginx/sites-available/fastapi_app /etc/nginx/sites-enabled/
 
 # Restart Nginx
 service nginx restart
