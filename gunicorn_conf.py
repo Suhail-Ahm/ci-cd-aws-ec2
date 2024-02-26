@@ -8,6 +8,6 @@ worker_class = 'uvicorn.workers.UvicornWorker'
 
 # Logging Options
 loglevel = 'debug'
-accesslog = '/home/fastapi_example/access_log'
-errorlog =  '/home/fastapi_example/error_log'
+accesslog = '/var/www/fastapi_app/logs/access_log'
+errorlog =  '/var/www/fastapi_app/logs/error_log'
 
